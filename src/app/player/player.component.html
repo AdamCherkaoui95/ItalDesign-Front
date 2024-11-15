@@ -1,0 +1,64 @@
+<main class="player">
+  <!-- Album Art Section -->
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROuBNBcOFFjXIkz4EkF_AyxysJil8Vldwb-Q&usqp=CAU" alt="album art" class="art">
+
+  <!-- Info Section (Artist & Song) -->
+  <div class="info">
+    <p>{{ selectedTrack?.title }}</p>
+  </div>
+
+  <!-- Media Player (Audio/Video) -->
+  <div *ngIf="selectedTrack">
+    <video *ngIf="isVideo()" #mediaPlayer [src]="selectedTrack.src" controls></video>
+    <audio *ngIf="isAudio()" #mediaPlayer [src]="selectedTrack.src" preload="metadata"></audio>
+  </div>
+
+  <!-- Progress Bar Section -->
+  <div class="prog">
+    <div class="prog-time">
+      <p class="left">{{ currentTime | date: 'mm:ss' }}</p>
+      <p class="right">{{ duration | date: 'mm:ss' }}</p>
+    </div>
+    <div class="prog-bar">
+      <div class="prog-bar-inner" [style.width.%]="progress"></div>
+    </div>
+  </div>
+
+  <!-- Control Buttons -->
+  <ul class="buttons">
+    <a href="#" class="button button-sm" (click)="shuffleTrack()">
+      <i class="fas fa-random fa-sm" aria-hidden="true"></i>
+      <span class="sr-only">Shuffle</span>
+    </a>
+    <a href="#" class="button button-md" (click)="previousTrack()">
+      <i class="fas fa-step-backward" aria-hidden="true"></i>
+      <span class="sr-only">Previous Music</span>
+    </a>
+    <a href="#" class="button button-lg" (click)="togglePlayPause()">
+      <i class="fas" [ngClass]="isPlaying ? 'fa-pause' : 'fa-play'" aria-hidden="true"></i>
+      <span class="sr-only">{{ isPlaying ? 'Pause' : 'Play' }}</span>
+    </a>
+    <a href="#" class="button button-md" (click)="nextTrack()">
+      <i class="fas fa-step-forward" aria-hidden="true"></i>
+      <span class="sr-only">Next Music</span>
+    </a>
+    <a href="#" class="button button-sm" (click)="repeatTrack()">
+      <i class="fas fa-circle-notch fa-sm" aria-hidden="true"></i>
+      <span class="sr-only">Repeat Song</span>
+    </a>
+  </ul>
+
+  <!-- Bottom Bar -->
+  <div class="bar"></div>
+</main>
+
+<!-- Audio/Video Player -->
+<audio #audioPlayer class="audio-player" preload="metadata" (play)="onPlay()" (pause)="onPause()" (timeupdate)="onTimeUpdate()">
+  <source [src]="selectedTrack?.src" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<video #videoPlayer class="video-player" preload="metadata" (play)="onPlay()" (pause)="onPause()" (timeupdate)="onTimeUpdate()">
+  <source [src]="selectedTrack?.src" type="video/mp4">
+  Your browser does not support the video element.
+</video>

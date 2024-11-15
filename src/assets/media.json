@@ -1,0 +1,22 @@
+{
+  "driver": {
+    "audio": [
+      { "title": "Track 1", "src": "path/to/driver/audio1.mp3" },
+      { "title": "Track 2", "src": "path/to/driver/audio2.mp3" }
+    ],
+    "video": [
+      { "title": "Video 1", "src": "path/to/driver/video1.mp4" },
+      { "title": "Video 2", "src": "path/to/driver/video2.mp4" }
+    ]
+  },
+  "passenger": {
+    "audio": [
+      { "title": "Track 1", "src": "path/to/passenger/audio1.mp3" },
+      { "title": "Track 2", "src": "path/to/passenger/audio2.mp3" }
+    ],
+    "video": [
+      { "title": "Video 1", "src": "path/to/passenger/video1.mp4" },
+      { "title": "Video 2", "src": "path/to/passenger/video2.mp4" }
+    ]
+  }
+}

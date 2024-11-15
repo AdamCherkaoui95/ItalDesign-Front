@@ -1,0 +1,17 @@
+<div class="sidebar">
+    <div class="tabs">
+      <button (click)="selectTab('audio')">Audio</button>
+      <button (click)="selectTab('video')">Video</button>
+    </div>
+    <div *ngIf="selectedTab === 'audio'">
+      <p *ngFor="let track of mediaData?.audio" (click)="selectTrack(track)">
+        {{ track.title }}
+      </p>
+    </div>
+    <div *ngIf="selectedTab === 'video'">
+      <p *ngFor="let video of mediaData?.video" (click)="selectTrack(video)">
+        {{ video.title }}
+      </p>
+    </div>
+  </div>
+  

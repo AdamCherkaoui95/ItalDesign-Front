@@ -1,0 +1,43 @@
+<div class="media-container">
+  <!-- Player for Driver -->
+  <div class="media-section reverse">
+    <div class="media-controls">
+      <h2>Driver</h2>
+      <div class="media-buttons">
+        <button (click)="setDriverMediaType('audio')" [class.active]="driverMediaType === 'audio'">Audio</button>
+        <button (click)="setDriverMediaType('video')" [class.active]="driverMediaType === 'video'">Video</button>
+      </div>
+      <div class="media-list">
+        <button *ngFor="let track of driverTracks[driverMediaType]" (click)="selectDriverTrack(track)">
+          {{ track.title }}
+        </button>
+      </div>
+    </div>
+
+    <div class="media-player">
+      <app-player [selectedTrack]="selectedDriverTrack"></app-player>
+    </div>
+  </div>
+
+  <!-- Separator -->
+  <div class="separator"></div>
+
+  <!-- Player for Passenger -->
+  <div class="media-section">
+    <div class="media-player">
+      <app-player [selectedTrack]="selectedPassengerTrack"></app-player>
+    </div>
+    <div class="media-controls">
+      <h2>Passenger</h2>
+      <div class="media-buttons">
+        <button (click)="setPassengerMediaType('audio')" [class.active]="passengerMediaType === 'audio'">Audio</button>
+        <button (click)="setPassengerMediaType('video')" [class.active]="passengerMediaType === 'video'">Video</button>
+      </div>
+      <div class="media-list">
+        <button *ngFor="let track of passengerTracks[passengerMediaType]" (click)="selectPassengerTrack(track)">
+          {{ track.title }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
